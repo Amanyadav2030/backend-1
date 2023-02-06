@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const port = process.env.PORT || 8080;
 const dbConnect = require('./config/db')
 const {ContentRouter,UserRouter,StatisticsRouter} = require('./routes/index.js');
 const app = express()
@@ -13,5 +14,5 @@ app.use('/statistics',StatisticsRouter);
 app.get('/', (req, res) => res.send('hello'))
 
 dbConnect().then(()=>{  
-    app.listen(8080, () => {console.log('server started on port 8080')})
+    app.listen(port, () => {console.log('server started on port 8080')})
 })
